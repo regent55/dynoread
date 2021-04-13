@@ -17,3 +17,5 @@ Output from process - A dataframe with converted data.
 Process - The process takes the screen value and filedate to determine the version. Each version has a start and end date. There is no overlap among versions.
           Once the version is determined, it is used to pull the firlds and exclude list for that version from SQL tables. That information is then used to 
           determine whether a line from the file should be ignored or not, read fields and (eventually) handle errors and missing values.
+
+In the future I will try and give some examples of the input file and records in the SQL tables and a test suite.
