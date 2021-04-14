@@ -2,6 +2,8 @@
 
 Hello! Dynoread is my first Python project for public consumption. It is a translatd from SAS code that ais used to read text files. This version reads a text file containing multiple screen scrapes. The process is table driven in the sense that adding or removing fields to read, the informat and outformats used, missing value tokens and values are all accomplished by adding, deleting or editting records in a SQL table. The goal is that one does not have to modify the Python code to adjust what is read or how it is read. For example, on Feburary 22 I added a new field to the screen I was collecteg. To read the new record format all I had to do was add a record to the fields table detailing the field name, what function totranslate its value, what value to use if the functionerred when transating the function, what string constitutes a missing value for the field and what value to return for a missing valur.  
 
+The whole idea is to handle changing input files without having to reprogram your input file.
+
 All of the automated features are not yet implemented. The project is somewhat still in the raw phase at the moment as there is very little error handling oncluded.But as it is added it will be table driven wherever possible.
 
 Terms used in this project:
