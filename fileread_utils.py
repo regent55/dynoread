@@ -114,7 +114,7 @@ def get_fields(version : str) -> list :
     ''' get_fields returns a list of tuples, one for each field to read in the
         input string.'''
     try:
-        cnx = mysql.connector.connect(user='root', password='tamelina',
+        cnx = mysql.connector.connect(user='root', password='xxxx',
                               host='127.0.0.1',
                               database='fin')
     
@@ -141,7 +141,7 @@ def get_keywords(versionx : str) -> list :
     ''' This function returns the list keywords used to exclude junk records''' 
 
     try:
-        cnx = mysql.connector.connect(user='root', password='tamelina',
+        cnx = mysql.connector.connect(user='root', password='xxxx',
                               host='127.0.0.1',
                               database='fin')
     
@@ -168,7 +168,7 @@ def get_version(screen : str, readdate : str) -> tuple :
         date should be a string in the form of yyyy-mm-dd'''
 
     try:
-        cnx = mysql.connector.connect(user='root', password='tamelina',
+        cnx = mysql.connector.connect(user='root', password='xxxx',
                               host='127.0.0.1',
                               database='fin')
     
