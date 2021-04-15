@@ -4,8 +4,6 @@ Hello! Dynoread is my first Python project for public consumption. It is a trans
 
 The whole idea is to handle changing input files without having to reprogram your input file.
 
-All of the automated features are not yet implemented. The project is somewhat still in the raw phase at the moment as there is very little error handling oncluded.But as it is added it will be table driven wherever possible.
-
 Terms used in this project:
     screen - This is the base screen being scraped. It may have several different layouts over time.
     version - This is a single layout of a screen.
