@@ -47,15 +47,23 @@ def convertfloat(xstr : str, cells : tuple ) -> float:
         expected to contain a %, but is not necessary. cells contains other
         information such as the value for a missing value, what value to 
         return if value us missing and other characters to remove.'''
-        
-    if xstr == '--':
-       return float(cells[6])
-    elif cells[7] != '':
-       return float(xstr.replace(cells[7] , ''))
-    else:
-        return float(xstr)
 
-def convertmorningstarcat(xstr : str, cells : tuple ) -> int:
+# if string is missing value symbol return missing value        
+    if xstr == cells[6]:
+       return float(cells[7])
+# remove any specified character
+    xstr = xstr.replace(cells[8],'')
+# assign float conversion if no error
+    try:
+        temp = float(xstr)
+# otherwise assign float conversion of error value
+    except:
+        temp = float(cells[5])
+# return value
+    else:
+        return temp
+
+def convertmorningstarcat(xstr : str, cells : tuple ) -> str:
     ''' convertpct converts a string(xstr) into a float. The string is 
         expected to contain a %, but is not necessary. cells contains other
         information such as the value for a missing value, what value to 
@@ -66,47 +74,45 @@ def convertmorningstarcat(xstr : str, cells : tuple ) -> int:
         expected to contain a %, but is not necessary. cells contains other
         information such as the value for a missing value, what value to 
         return if value us missing and other characters to remove.'''
-    if xstr == '--':
-        return ""
+
+# if string equals missing string then return missing value
+    if xstr == cells[6]:
+        return cells[7]
+# otherwise return string unchanged
     else:
         return xstr
-
-def convertpct(xstr : str, cells : tuple ) -> float:
-    ''' convertpct converts a string(xstr) into a float. The string is 
-        expected to contain a %, but is not necessary. cells contains other
-        information such as the value for a missing value, what value to 
-        return if value us missing and other characters to remove.'''
-    if xstr == '--':
-        return 0.0
-    elif xstr.find('%') >= 0:
-        return float(xstr.strip('%'))
-    else:
-        print('Unknown PCT string line:', i, xstr)
-    return 0.0
 
 def convertthestreet(xstr : str, cells : tuple ) -> int:
     ''' convertpct converts a string(xstr) into a float. The string is 
         expected to contain a %, but is not necessary. cells contains other
         information such as the value for a missing value, what value to 
-        return if value us missing and other characters to remove.'''
-    if xstr == '--':
-        return -99
+        return if value is missing and other characters to remove. The street 
+        field contains 3 values: Buy/Hold/Sell and missing symbol ---  This 
+        function converts these values to integers 1/0,-1 and -99'''
+        
+# if missing symbol return missing converted missing valuevalue
+    if xstr == cells[6]:
+        return int(cells[7])
     elif xstr == 'Buy':
         return 1
     elif xstr == 'Sell':
         return -1
     elif xstr == 'Hold':
         return 0
+# if string is not ---,Buy, old or Sell return converted error value
     else:
-        return -98
+        return int(cells[5])
 
 def convertstring(xstr : str, cells : tuple  ) -> str:
     ''' convertpct converts a string(xstr) into a float. The string is 
         expected to contain a %, but is not necessary. cells contains other
         information such as the value for a missing value, what value to 
         return if value us missing and other characters to remove.'''
-    if xstr == '--':
-        return ""
+        
+# if missing string return missing value
+    if xstr == cells[6]:
+        return cells[7]
+# otherwise return string
     else:
         return xstr
 
@@ -114,7 +120,7 @@ def get_fields(version : str) -> list :
     ''' get_fields returns a list of tuples, one for each field to read in the
         input string.'''
     try:
-        cnx = mysql.connector.connect(user='root', password='xxxx',
+        cnx = mysql.connector.connect(user='root', password='tamelina',
                               host='127.0.0.1',
                               database='fin')
     
@@ -141,7 +147,7 @@ def get_keywords(versionx : str) -> list :
     ''' This function returns the list keywords used to exclude junk records''' 
 
     try:
-        cnx = mysql.connector.connect(user='root', password='xxxx',
+        cnx = mysql.connector.connect(user='root', password='tamelina',
                               host='127.0.0.1',
                               database='fin')
     
@@ -168,7 +174,7 @@ def get_version(screen : str, readdate : str) -> tuple :
         date should be a string in the form of yyyy-mm-dd'''
 
     try:
-        cnx = mysql.connector.connect(user='root', password='xxxx',
+        cnx = mysql.connector.connect(user='root', password='tamelina',
                               host='127.0.0.1',
                               database='fin')
     

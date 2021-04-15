@@ -36,8 +36,9 @@ fields = etf.get_fields(version)
 #   3 => position
 #   4 => convert func
 #   5 => error value
-#   6 => missing value
-#   7 => removestring
+#   6 =? missingsymbol
+#   7 => missing value
+#   8 => removestring
 
 # Need to create unique list of converrt functions from fields
 funclist = list(set([x[4] for x in fields]))
@@ -69,5 +70,6 @@ for line in lines:
 # add dict to list of all parsed lines
             data.append(items)
 # Put data into dataframe
-            df = DataFrame (data)
+print("Converting to dataframe")
+df = DataFrame (data)
 
